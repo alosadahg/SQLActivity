@@ -19,7 +19,6 @@ public class Connect {
     public Connect() {
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BankAlosada","root","");
-            JOptionPane.showMessageDialog(null,"Connected");
         } catch (SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -28,10 +27,18 @@ public class Connect {
     public void registerUser(User user) {
         Statement stmt;
         String sql = null;
+        ResultSet rs = null;
         try {
             stmt = conn.createStatement();
-            sql = "insert into user values('"+user.getUsername()+"','"+user.getPassword()+"','"+user.getFirstname()+"','"+user.getLastname()+"',0)";
-            stmt.executeUpdate(sql);
+            sql = "select * from user where username='"+user.getUsername()+"'";
+            rs = stmt.executeQuery(sql);
+            if(rs.next()==false) {
+                sql = "insert into user values('"+user.getUsername()+"','"+user.getPassword()+"','"+user.getFirstname()+"','"+user.getLastname()+"',0)";
+                stmt.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "New record saved.", "Registration Successful",1);
+            } else {
+                JOptionPane.showMessageDialog(null,"Username already existing.","Registration failed",0);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }

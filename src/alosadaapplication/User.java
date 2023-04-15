@@ -13,7 +13,7 @@ public class User {
     private String password;
     private String firstname;
     private String lastname;
-    private int usertype;
+    private int userType;
 
     public String getUsername() {
         return username;
@@ -47,12 +47,12 @@ public class User {
         this.lastname = lastname;
     }
 
-    public int getUsertype() {
-        return usertype;
+    public int getUserType() {
+        return userType;
     }
 
-    public void setUsertype(int usertype) {
-        this.usertype = usertype;
+    public void setUserType(int userType) {
+        this.userType = userType;
     }
     
     public User() {
@@ -63,7 +63,7 @@ public class User {
         setPassword(password);
         setFirstname(firstname);
         setLastname(lastname);
-        setUsertype(0);
+        setUserType(0);
     }
     
 }

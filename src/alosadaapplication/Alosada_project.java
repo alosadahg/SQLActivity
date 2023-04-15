@@ -15,10 +15,10 @@ public class Alosada_project {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        LogIn login = new LogIn();
-        Connect conn = new Connect();
-        User u = new User("admin", "qwerty", "john", "doe");
-        conn.registerUser(u);
+//        Login login = new Login();
+//        login.show();
+        Register register = new Register();
+        register.show();
     }
     
 }

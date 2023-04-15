@@ -9,7 +9,6 @@ package alosadaapplication;
  * @author L14Y09W07
  */
 public class Register extends javax.swing.JFrame {
-    User user;
 
     /**
      * Creates new form Register
@@ -35,20 +34,22 @@ public class Register extends javax.swing.JFrame {
         tfUsernameReg = new javax.swing.JTextField();
         tfPasswordReg = new javax.swing.JTextField();
         tfFirstname = new javax.swing.JTextField();
-        tflastname = new javax.swing.JTextField();
+        tfLastname = new javax.swing.JTextField();
         btnRegAcc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Register");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Register User");
 
-        jLabel2.setText("username");
+        jLabel2.setText("Username");
 
-        jLabel3.setText("password");
+        jLabel3.setText("Password");
 
-        jLabel4.setText("firstname");
+        jLabel4.setText("Firstname");
 
-        jLabel5.setText("lastname");
+        jLabel5.setText("Lastname");
 
         tfUsernameReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +58,7 @@ public class Register extends javax.swing.JFrame {
         });
 
         btnRegAcc.setText("Register");
+        btnRegAcc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnRegAcc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegAccActionPerformed(evt);
@@ -68,34 +70,30 @@ public class Register extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegAcc)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfPasswordReg))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfUsernameReg, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfFirstname))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tflastname)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnRegAcc)
-                                .addGap(68, 68, 68)))))
-                .addContainerGap(87, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(168, 168, 168))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfLastname, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tfFirstname)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfPasswordReg)
+                            .addComponent(tfUsernameReg, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(75, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,10 +115,10 @@ public class Register extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(tflastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfLastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(btnRegAcc)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -128,6 +126,20 @@ public class Register extends javax.swing.JFrame {
 
     private void btnRegAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegAccActionPerformed
         // TODO add your handling code here:
+        User user;
+        String username;
+        String password;
+        String fname;
+        String lname;
+        Connect conn = new Connect();
+        
+        username = tfUsernameReg.getText();
+        password = tfPasswordReg.getText();
+        fname = tfFirstname.getText();
+        lname = tfLastname.getText();
+        
+        User u = new User(username, password, fname, lname);
+        conn.registerUser(u);
     }//GEN-LAST:event_btnRegAccActionPerformed
 
     private void tfUsernameRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsernameRegActionPerformed
@@ -177,8 +189,8 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField tfFirstname;
+    private javax.swing.JTextField tfLastname;
     private javax.swing.JTextField tfPasswordReg;
     private javax.swing.JTextField tfUsernameReg;
-    private javax.swing.JTextField tflastname;
     // End of variables declaration//GEN-END:variables
 }
