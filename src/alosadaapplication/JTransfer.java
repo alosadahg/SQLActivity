@@ -58,7 +58,7 @@ public class JTransfer extends javax.swing.JFrame {
         btnTransfer = new javax.swing.JButton();
         jErrorMsg = new javax.swing.JLabel();
         jAccountNumber = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnAddAcc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,7 +100,12 @@ public class JTransfer extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Add new account");
+        btnAddAcc.setText("Add new account");
+        btnAddAcc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddAccActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,7 +126,7 @@ public class JTransfer extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addComponent(jAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnAddAcc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jErrorMsg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -139,7 +144,7 @@ public class JTransfer extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
+                            .addComponent(btnAddAcc)
                             .addComponent(jUsername))
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -183,6 +188,12 @@ public class JTransfer extends javax.swing.JFrame {
         String balance = (String) jTable1.getValueAt(index, 1);
         btnTransfer.setEnabled(true);
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void btnAddAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAccActionPerformed
+        // TODO add your handling code here:
+        AddAccount addAcc = new AddAccount(jUsername.getText().toString());
+        addAcc.show();
+    }//GEN-LAST:event_btnAddAccActionPerformed
    
     /**
      * @param args the command line arguments
@@ -221,10 +232,10 @@ public class JTransfer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddAcc;
     private javax.swing.JButton btnTransfer;
     private javax.swing.JTextField jAccountNumber;
     private javax.swing.JTextField jBalance;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jErrorMsg;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

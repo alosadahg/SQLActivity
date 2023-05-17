@@ -24,63 +24,73 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="71" max="32767" attributes="0"/>
+              <EmptySpace pref="56" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
-                  <Component id="btnRegAcc" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="2" max="32767" attributes="0"/>
                   <Group type="102" alignment="2" attributes="0">
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="19" pref="19" max="19" attributes="0"/>
-                      <Component id="tfFirstname" linkSize="1" min="-2" pref="183" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="2" attributes="0">
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="tfLastname" linkSize="1" pref="183" max="32767" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="65" pref="65" max="65" attributes="0"/>
+                      <Component id="tfPasswordReg" linkSize="4" min="-2" pref="183" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="2" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="18" pref="18" max="18" attributes="0"/>
-                      <Component id="tfUsernameReg" linkSize="1" min="-2" pref="183" max="-2" attributes="0"/>
+                      <EmptySpace min="62" pref="62" max="62" attributes="0"/>
+                      <Component id="tfUsernameReg" linkSize="4" min="-2" pref="183" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="2" attributes="0">
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="21" pref="21" max="21" attributes="0"/>
-                      <Component id="tfPasswordReg" linkSize="1" min="-2" pref="183" max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="63" pref="63" max="63" attributes="0"/>
+                      <Component id="tfFirstname" linkSize="4" min="-2" pref="183" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="2" attributes="0">
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="64" pref="64" max="64" attributes="0"/>
+                      <Component id="tfLastname" linkSize="4" min="-2" pref="183" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="btnRegAcc" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="2" attributes="0">
+                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="18" pref="18" max="18" attributes="0"/>
+                      <Component id="tfConfirmPass" linkSize="4" min="-2" pref="183" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jLabel1" alignment="2" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="71" max="32767" attributes="0"/>
+              <EmptySpace pref="56" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfUsernameReg" linkSize="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfUsernameReg" linkSize="5" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                  <Component id="tfPasswordReg" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfFirstname" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfFirstname" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfLastname" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfLastname" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel3" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="tfPasswordReg" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel6" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="tfConfirmPass" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Component id="btnRegAcc" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="65" max="32767" attributes="0"/>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -121,25 +131,23 @@
     </Component>
     <Component class="javax.swing.JTextField" name="tfUsernameReg">
       <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfUsernameRegActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfPasswordReg">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="tfFirstname">
       <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfFirstnameActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfLastname">
       <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnRegAcc">
@@ -150,6 +158,19 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegAccActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="tfPasswordReg">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfPasswordRegActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Confirm Password"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="tfConfirmPass">
     </Component>
   </SubComponents>
 </Form>

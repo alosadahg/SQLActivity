@@ -16,6 +16,13 @@ public class AddAccount extends javax.swing.JFrame {
     public AddAccount() {
         initComponents();
     }
+    
+    public AddAccount(String username) {
+        initComponents();
+        tfUsername.setText(username);
+        tfUsername.setEditable(false);
+        tfUsername.setEnabled(false);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,6 +41,7 @@ public class AddAccount extends javax.swing.JFrame {
         tfUsername = new javax.swing.JTextField();
         tfBalance = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,16 +53,19 @@ public class AddAccount extends javax.swing.JFrame {
 
         jLabel4.setText("Balance");
 
-        tfAccNum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfAccNumActionPerformed(evt);
-            }
-        });
+        tfUsername.setDisabledTextColor(new java.awt.Color(51, 51, 51));
 
         btnAdd.setText("Add Account");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
+            }
+        });
+
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -80,13 +91,18 @@ public class AddAccount extends javax.swing.JFrame {
                             .addComponent(tfBalance, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(159, 159, 159)
-                        .addComponent(btnAdd)))
+                        .addComponent(btnAdd))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack)))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -108,13 +124,14 @@ public class AddAccount extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfAccNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfAccNumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfAccNumActionPerformed
-
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,6 +177,7 @@ public class AddAccount extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

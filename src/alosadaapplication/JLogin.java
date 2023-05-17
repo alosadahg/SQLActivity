@@ -73,7 +73,7 @@ public class JLogin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(76, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -90,7 +90,7 @@ public class JLogin extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(24, 24, 24)
                         .addComponent(jUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +107,7 @@ public class JLogin extends javax.swing.JFrame {
                 .addComponent(btnLogin)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addGap(59, 59, 59))
                     .addGroup(layout.createSequentialGroup()
@@ -129,24 +129,25 @@ public class JLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        int result=conn.login(jUsername.getText(), jPassword.getText());
-       if (result== 1){
+        int result=conn.login(jUsername.getText().toString(), jPassword.getText().toString());
+       if (result== 0){
            mainGui = new JTransfer(jUsername.getText());
             mainGui.show();
-       } else if(result==2){
-           
+       } else if(result==1){
+           JOptionPane.showMessageDialog(this, "You are an administrator");
        }
-       else if(result ==0)
+       else if(result ==2){
            JOptionPane.showMessageDialog(this, "Incorrect username/password.");
-           
-       
+           return;
+       }
+       dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         JRegisterUser gui = new JRegisterUser();
         gui.show();
-        
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

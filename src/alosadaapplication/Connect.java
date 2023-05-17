@@ -19,7 +19,7 @@ public class Connect {
     public Connect(){
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankalosada","root","");
-            JOptionPane.showMessageDialog(null, "Connected");
+//            JOptionPane.showMessageDialog(null, "Connected");
         } catch (SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -32,11 +32,16 @@ public class Connect {
         try {
             stmt = conn.createStatement();
             sql="select * from user where username='"+user.getUsername()+"'";
+            System.out.println(sql);
             rs =stmt.executeQuery(sql);
             if(rs.next()==false){
                 sql="insert into user values('"+user.getUsername()+"','"+user.getPassword()+"','"+user.getFirstname()+"','"+user.getLastname()+"',0)";
                 stmt.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Account created successfully");
                 return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Username already exists.\nPlease log in.", "Create User failed.", JOptionPane.ERROR_MESSAGE);
+                return false;
             }
         } catch (SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,16 +64,17 @@ public class Connect {
             sql ="select * from user where username='"+username+"' and password='"+password+"'";
             rs = stmt.executeQuery(sql);
             if (rs.next()==true) {
-                sql ="select accounttype from user where username='"+username+"' and password='"+password+"'";
-                int accType = rs.getInt(1);
+                sql ="select usertype from user where username='"+username+"'";
+                int accType = rs.getInt("usertype");
                 if(accType == 0) {
-                    return 1;
+                    return 0;
                 } else {
-                    return 2;
+                    return 1;
                 } 
+            } else {
+                return 2;
             }
-            else
-                return 0;
+            
         } catch (SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
