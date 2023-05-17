@@ -9,9 +9,11 @@ package alosadaapplication;
  * @author L14Y09W07
  */
 public class Account {
-    private String accountNumber;
-    private double balance;
-    private String username;
+
+    public Account(String accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
 
     public String getAccountNumber() {
         return accountNumber;
@@ -19,14 +21,6 @@ public class Account {
 
     public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
     }
 
     public String getUsername() {
@@ -37,16 +31,20 @@ public class Account {
         this.username = username;
     }
 
-    public Account() {
-        setBalance(1000);
+    public double getBalance() {
+        return balance;
     }
 
-    public Account(String accountNumber, double balance, String username) {
-        setAccountNumber(accountNumber);
-        setBalance(balance);
-        setUsername(username);
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
-    
-    
-    
+
+    public Account(String accountNumber, String username, double balance) {
+        this.accountNumber = accountNumber;
+        this.username = username;
+        this.balance = balance;
+    }
+    private String accountNumber;
+    private String username;
+    private double balance;
 }

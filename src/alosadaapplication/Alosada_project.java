@@ -4,21 +4,21 @@
  */
 package alosadaapplication;
 
+
 /**
  *
  * @author L14Y09W07
  */
 public class Alosada_project {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         // TODO code application logic here
-//        Login login = new Login();
-//        login.show();
-        Register register = new Register();
-        register.show();
+        //Connect conn = new Connect();
+        //User user = new User("test","qwerty","john","doe");
+        //conn.registerUser(user);
+        JLogin gui = new JLogin();
+        //JRegisterUser gui = new JRegisterUser();
+//        JMain gui = new JMain();
+        gui.show();
     }
-    
 }
