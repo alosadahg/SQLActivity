@@ -81,6 +81,18 @@ public class Connect {
         return -1;
     }
     
+    public void addAccount(Account acc) {
+        Statement stmt;
+        String sql = "insert into account values('" + acc.getAccountNumber() + "',"+ acc.getBalance() + ",'" + acc.getUsername() + "')";
+        try {
+            stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Account successfully added.");
+        } catch (SQLException ex) {
+            Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public ArrayList<Account> displayAccount(String username){
         ArrayList<Account> acc = new ArrayList<Account>();
         String sql ="select * from account where username='"+username+"'";
@@ -109,6 +121,7 @@ public class Connect {
         try {
             stmt = conn.createStatement();
             stmt.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Transaction update is pending for approval");
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
@@ -124,6 +137,7 @@ public class Connect {
         try {
             stmt = conn.createStatement();
             stmt.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Transaction update is pending for approval");
         } catch (SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -157,4 +171,42 @@ public class Connect {
         return false;
     }
     
+    public ResultSet displayVerification() {
+        Statement stmt;
+        ResultSet rs;
+        String sql = "select * from verification where status=0";
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    
+    public int approveTransaction(Verification ver) {
+        Statement stmt;
+        ResultSet rs;
+        String sql = null;
+        int transaction = 0;
+        if(ver.getTypeoftransaction().equalsIgnoreCase("update")) {
+            transaction = 1;
+            sql = "update account set balance=" + ver.getAmount() + " where accountnumber='" + ver.getAccountNumber() + "'";
+        } else if(ver.getTypeoftransaction().equalsIgnoreCase("delete")) {
+            transaction = 2;
+            sql = "delete from account where accountnumber='" + ver.getAccountNumber() + "'";
+        }
+        try {
+            stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+            sql = "update verification set status=1 where customerusername='" + ver.getCustomerUsername() +"' and accountnumber='" + ver.getAccountNumber() + "' and amount=" + ver.getAmount() + " and typeoftransaction='" + ver.getTypeoftransaction() + "'";
+            stmt.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return transaction;
+    }
 }

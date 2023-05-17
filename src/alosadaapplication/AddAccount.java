@@ -16,12 +16,16 @@ public class AddAccount extends javax.swing.JFrame {
     public AddAccount() {
         initComponents();
     }
+    String classType;
+    Connect conn;
     
-    public AddAccount(String username) {
+    public AddAccount(String username, String classType) {
         initComponents();
+        conn = new Connect();
         tfUsername.setText(username);
         tfUsername.setEditable(false);
         tfUsername.setEnabled(false);
+        this.classType = classType;
     }
 
     /**
@@ -126,10 +130,22 @@ public class AddAccount extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        String username = tfUsername.getText().toString();
+        String accnum = tfAccNum.getText().toString();
+        double balance = Double.parseDouble(tfBalance.getText());
+        Account acc = new Account(accnum, username, balance);
+        conn.addAccount(acc);
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        if(classType.equals("JMain")) {
+            JMain back = new JMain(tfUsername.getText().toString());
+            back.show();
+        } else if(classType.equals("JTransfer")) {
+            JTransfer back = new JTransfer(tfUsername.getText().toString());
+            back.show();
+        }
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 

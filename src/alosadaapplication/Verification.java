@@ -26,6 +26,13 @@ public class Verification {
         this.status = status;
     }
 
+    public Verification(String customerUsername, String accountNumber, double amount, String typeoftransaction) {
+        this.customerUsername = customerUsername;
+        this.accountNumber = accountNumber;
+        this.amount = amount;
+        this.typeoftransaction = typeoftransaction;
+    }
+
     public String getCustomerUsername() {
         return customerUsername;
     }

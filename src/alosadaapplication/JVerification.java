@@ -4,6 +4,12 @@
  */
 package alosadaapplication;
 
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Hernah
@@ -13,8 +19,26 @@ public class JVerification extends javax.swing.JFrame {
     /**
      * Creates new form JVerification
      */
+    
+    Connect con;
+    DefaultTableModel tbl;
     public JVerification() {
+        con = new Connect();
         initComponents();
+        tbl = (DefaultTableModel) tblVerification.getModel();
+        displayVerification();
+    }
+    
+    public void displayVerification() {
+        ResultSet rs = con.displayVerification();
+        try {
+            while(rs.next()) {
+                Object[] data = {rs.getString("customerusername"), rs.getString("accountnumber"), rs.getDouble("amount"), rs.getString("typeoftransaction")};
+                tbl.addRow(data);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JVerification.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -26,21 +50,98 @@ public class JVerification extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblVerification = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tblVerification.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Customer Username", "Account Number", "Amount", "Type of Transaction"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblVerification.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblVerificationMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblVerification);
+
+        jButton1.setText("Back to Login");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblVerificationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVerificationMouseClicked
+        // TODO add your handling code here:
+        int index = tblVerification.getSelectedRow();
+        String username = (String) tblVerification.getValueAt(index, 0);
+        String accNum = (String) tblVerification.getValueAt(index, 1);
+        double amount = (Double) tblVerification.getValueAt(index, 2);
+        String transactionType = (String) tblVerification.getValueAt(index, 3);
+        
+        Verification ver = new Verification(username, accNum, amount, transactionType);
+        
+        int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to approve this transaction?", "Confirm verification", JOptionPane.YES_NO_OPTION);
+        if(confirmation==0) {
+            int confirmed = con.approveTransaction(ver);
+            if(confirmed==1) {
+                JOptionPane.showMessageDialog(null, "Transaction update has been approved.");
+            } else if(confirmed==2) {
+                JOptionPane.showMessageDialog(null, "Transaction delete has been approved.");
+            }
+        }
+        
+        tbl.setRowCount(0);
+        displayVerification();
+    }//GEN-LAST:event_tblVerificationMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JLogin login = new JLogin();
+        login.show();
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +180,8 @@ public class JVerification extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblVerification;
     // End of variables declaration//GEN-END:variables
 }

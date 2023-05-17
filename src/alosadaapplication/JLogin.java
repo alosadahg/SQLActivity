@@ -16,7 +16,7 @@ public class JLogin extends javax.swing.JFrame {
      * Creates new form JLogin
      */
     Connect conn;
-    JTransfer mainGui;
+    JMain mainGui;
     public JLogin() {
         initComponents();
         conn = new Connect();
@@ -131,12 +131,12 @@ public class JLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         int result=conn.login(jUsername.getText().toString(), jPassword.getText().toString());
        if (result== 0){
-           mainGui = new JTransfer(jUsername.getText());
+           mainGui = new JMain(jUsername.getText());
             mainGui.show();
        } else if(result==1){
-           JOptionPane.showMessageDialog(this, "You are an administrator");
-       }
-       else if(result ==2){
+           JVerification gui = new JVerification();
+           gui.show();
+       } else if(result ==2){
            JOptionPane.showMessageDialog(this, "Incorrect username/password.");
            return;
        }
