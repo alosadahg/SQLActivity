@@ -132,7 +132,12 @@ public class AddAccount extends javax.swing.JFrame {
         // TODO add your handling code here:
         String username = tfUsername.getText().toString();
         String accnum = tfAccNum.getText().toString();
-        double balance = Double.parseDouble(tfBalance.getText());
+        double balance;
+        if(tfBalance.getText().isBlank()) {
+            balance = 1000.0;
+        } else {
+            balance = Double.parseDouble(tfBalance.getText());
+        }
         Account acc = new Account(accnum, username, balance);
         conn.addAccount(acc);
     }//GEN-LAST:event_btnAddActionPerformed

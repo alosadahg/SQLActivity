@@ -207,7 +207,10 @@ public class JMain extends javax.swing.JFrame {
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
         // TODO add your handling code here:
         Account newAcc = new Account(jAccountNumber.getText(),jUsername.getText(),Double.parseDouble(jBalance.getText()));
-        conn.updateBalance(newAcc);
+        boolean hasUpdated = conn.updateBalance(newAcc);
+        if(hasUpdated==false) {
+            JOptionPane.showMessageDialog(null, "Process failed.\nAlready has pending update transaction.", "Update failed", JOptionPane.ERROR_MESSAGE);
+        }
         jAccountNumber.setText("");
         jBalance.setText("");
     }//GEN-LAST:event_jButtonUpdateActionPerformed
@@ -224,7 +227,10 @@ public class JMain extends javax.swing.JFrame {
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // TODO add your handling code here:
         Account newAcc = new Account(jAccountNumber.getText(),jUsername.getText(),Double.parseDouble(jBalance.getText()));
-        conn.deleteAccount(newAcc);
+        boolean hasDeleted = conn.deleteAccount(newAcc);
+        if(hasDeleted==false) {
+            JOptionPane.showMessageDialog(null, "Process failed.\nAlready has pending delete transaction.", "Delete failed", JOptionPane.ERROR_MESSAGE);
+        }
         jAccountNumber.setText("");
         jBalance.setText("");
     }//GEN-LAST:event_jButtonDeleteActionPerformed

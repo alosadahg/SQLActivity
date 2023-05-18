@@ -114,33 +114,58 @@ public class Connect {
     }
     
     public boolean updateBalance(Account account){
+//        String accNum = account.getAccountNumber();
+//        double newBal = account.getBalance();
+//        String sql = "insert into verification values('"+account.getUsername()+"','"+accNum+"',"+newBal+",'update',0)";
+//        Statement stmt;
+//        try {
+//            stmt = conn.createStatement();
+//            stmt.executeUpdate(sql);
+//            JOptionPane.showMessageDialog(null, "Transaction update is pending for approval");
+//            return true;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return false;
         String accNum = account.getAccountNumber();
         double newBal = account.getBalance();
-        String sql = "insert into verification values('"+account.getUsername()+"','"+accNum+"',"+newBal+",'update',0)";
+        String sql = "select * from verification where accountnumber='" + account.getAccountNumber() +"' and typeoftransaction='update'";
         Statement stmt;
+        ResultSet rs;
         try {
             stmt = conn.createStatement();
-            stmt.executeUpdate(sql);
-            JOptionPane.showMessageDialog(null, "Transaction update is pending for approval");
-            return true;
+            rs = stmt.executeQuery(sql);
+            if(rs.next()==false) {
+                sql = "insert into verification values('"+account.getUsername()+"','"+accNum+"',"+newBal+",'update',0)";
+                stmt.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Transaction update is pending for approval");
+                return true;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
     
-    public void deleteAccount(Account account){
+    public boolean deleteAccount(Account account){
         String accNum = account.getAccountNumber();
         double newBal = account.getBalance();
-        String sql = "insert into verification values('"+account.getUsername()+"','"+accNum+"',"+newBal+",'delete',0)";
+        String sql = "select * from verification where accountnumber='" + account.getAccountNumber() +"' and typeoftransaction='delete'"; 
         Statement stmt;
+        ResultSet rs;
         try {
             stmt = conn.createStatement();
-            stmt.executeUpdate(sql);
-            JOptionPane.showMessageDialog(null, "Transaction update is pending for approval");
+            rs = stmt.executeQuery(sql);
+            if(rs.next()==false) {
+                sql = "insert into verification values('"+account.getUsername()+"','"+accNum+"',"+newBal+",'delete',0)";
+                stmt.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Transaction delete is pending for approval");
+                return true;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
     }
 
     public boolean balanceTransfer(String acctNumFrom, String acctNumTo, double amnt, String username) {
